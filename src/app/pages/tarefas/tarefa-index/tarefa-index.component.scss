@@ -1,0 +1,68 @@
+.form-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+    .example-full-width {
+        width: 17%;
+        padding: 10px;
+      }
+    
+  }
+
+  .example-button-row {
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 20px;
+    max-width: 600px;
+
+    button{
+        color: #303030;
+        background-color: #ffffee;
+    }
+    
+    > #btnEnviar{
+        background-color: rgb(213, 244, 255);
+    }
+  }
+  
+  #btnEditar{
+    color: #303030;
+  }
+
+  table{
+    width: 100%;
+    padding: 10px;
+    justify-content: space-between;
+  }
+
+  main{
+    padding: 20px 0 50px 0;
+  }
+
+  .example-action-buttons {
+    padding-bottom: 20px;
+  }
+  
+  .example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .example-headers-align .mat-mdc-form-field + .mat-mdc-form-field {
+    margin-left: 8px;
+  }
+
+  .conteudoExpansionPanel{
+    text-transform: none;
+    list-style: none;
+  }
+
+  .example-headers-align{
+    background-color: #f5f5f5;
+  }
+
+  #info{
+    color: red;
+  }

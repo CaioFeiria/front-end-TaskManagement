@@ -1,0 +1,44 @@
+<app-menu></app-menu>
+<main>
+    <form class="form-section">
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Id</mat-label>
+            <input type="number" matInput placeholder="Ex. 1" name="id" [(ngModel)]="this.Id">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Nome</mat-label>
+            <input type="text" matInput placeholder="Ex. João" name="nome" [(ngModel)]="this.Nome">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Cargo</mat-label>
+            <input type="text" matInput placeholder="Ex. Dev" name="cargo" [(ngModel)]="this.Cargo">
+        </mat-form-field>
+        <div class="example-button-row">
+            <button id="btnEnviar" mat-raised-button type="button" (click)="definirPesquisa()">Pesquisar<mat-icon>search</mat-icon></button>
+            <button mat-raised-button type="button" (click)="limparCampos()">Limpar<mat-icon>clear</mat-icon></button>
+            <button mat-raised-button type="button" routerLink="/usuarios/create">Novo Usuário<mat-icon>add</mat-icon></button>
+        </div>
+    </form>
+    <table mat-table [dataSource]="Usuarios" class="mat-elevation-z8">
+        <ng-container matColumnDef="Id">
+            <th mat-header-cell *matHeaderCellDef>Id</th>
+            <td mat-cell *matCellDef="let Usuarios" routerLink="/usuarios/edit/{{Usuarios.Id}}">
+                <button mat-stroked-button>{{Usuarios.Id}}</button></td>
+        </ng-container>
+        <ng-container matColumnDef="Nome">
+            <th mat-header-cell *matHeaderCellDef>Nome</th>
+            <td mat-cell *matCellDef="let Usuarios">{{Usuarios.Nome}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let Usuarios">{{Usuarios.Email}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Cargo">
+            <th mat-header-cell *matHeaderCellDef>Cargo</th>
+            <td mat-cell *matCellDef="let Usuarios">{{Usuarios.Cargo}}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</main>
+<app-footer></app-footer>

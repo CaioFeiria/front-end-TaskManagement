@@ -1,0 +1,52 @@
+<app-menu></app-menu>
+<main>
+  <form class="form-section">
+    <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Titulo</mat-label>
+        <input type="text" matInput placeholder="Ex. Contas" name="titulo" [(ngModel)]="this.Titulo">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>Prazo</mat-label>
+      <input matInput [matDatepicker]="picker" name="data" 
+          (ngModel)="this.Data"
+          (ngModelChange)="this.Data=$event">
+      <mat-hint>Dia/Mês/Ano</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <div class="example-button-row">
+        <button id="btnEnviar" mat-raised-button type="button" (click)="definirPesquisa()">Pesquisar<mat-icon>search</mat-icon></button>
+        <button mat-raised-button type="reset" (click)="Reload()">Limpar<mat-icon>clear</mat-icon></button>
+        <button mat-raised-button type="button" routerLink="/tarefas/create" >Nova Tarefa<mat-icon>add</mat-icon></button>
+    </div>
+</form>
+  <mat-accordion class="example-headers-align" hideToggle>
+      <mat-expansion-panel *ngFor="let tarefa of this.Tarefas">
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{tarefa.Prazo | date:"dd/MM/yyyy"}}</mat-panel-title>
+            <mat-panel-description>
+              {{tarefa.Titulo}}   
+              <mat-icon *ngIf="tarefa.Estado === true && tarefa.Prioridade === false">check_circle</mat-icon>
+              <mat-icon id="info" *ngIf="tarefa.Prioridade === true">info</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <ul class="conteudoExpansionPanel">
+              <li><strong>Descrição: </strong>{{tarefa.Descricao}}</li>
+              <li><strong>Prazo: </strong>{{tarefa.Prazo | date: 'dd/MM/yyyy'}}</li>
+              <li><strong>Prioridade: </strong>{{tarefa.Prioridade ? "Importante" : ""}}</li>
+              <li><strong>Estado: </strong>{{tarefa.Estado ? "Concluído" : ""}}</li>
+              <div *ngFor="let usuario of this.Usuarios">
+                <li *ngIf="usuario.Id === tarefa.Id_responsavel">
+                  <strong>Responsável: </strong>
+                  {{usuario.Nome}} ({{usuario.Cargo}})
+                </li>
+              </div>
+          </ul>
+          <mat-action-row>
+            <button id="btnEditar" mat-stroked-button routerLink="/tarefas/edit/{{tarefa.Id}}">
+              <mat-icon>edit</mat-icon>Editar</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+  </mat-accordion>
+</main>
+<app-footer></app-footer>

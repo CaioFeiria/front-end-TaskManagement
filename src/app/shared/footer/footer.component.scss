@@ -1,0 +1,15 @@
+footer{
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+    text-align: center;
+}
+
+footer > p{
+    font-size: 1.115em;
+    color: #0d0d0d;
+}
+
+footer > p > span{
+    font-weight: bolder;
+}

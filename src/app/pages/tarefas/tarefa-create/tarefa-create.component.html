@@ -1,0 +1,52 @@
+<app-menu></app-menu>
+<main>
+    <section class="text-container">
+        <legend><strong>Nova tarefa</strong></legend>
+    </section>
+    <section class="container">
+        <form class="example-form">
+            <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>Titulo</mat-label>
+                <input matInput type="text" matInput placeholder="Ex. Conta" name="titulo" [(ngModel)]="this.Tarefa.Titulo">
+              </mat-form-field>
+              <mat-form-field id="descricao" appearance="outline" class="example-full-width">
+                <mat-label>Descrição</mat-label>
+                <textarea id="no-resize" matInput #input maxlength="450" name="descricao"
+                 (input)="onInput($event)" [(ngModel)]="this.Tarefa.Descricao"></textarea>
+                <mat-hint align="end">{{value().length}}/450</mat-hint>
+              </mat-form-field>
+              <mat-form-field appearance="outline" id="dataPicker" class="example-full-width">
+                <mat-label>Prazo</mat-label>
+                <input matInput [matDatepicker]="picker" name="data" 
+                    [ngModel]="this.Tarefa.Prazo" 
+                    (ngModelChange)="this.Tarefa.Prazo=$event">
+                <mat-hint>Dia/Mês/Ano</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <div class="slideToggle">
+                    <p><mat-slide-toggle labelPosition="before" name="prioridade" [checked]="true" [(ngModel)]="this.Tarefa.Prioridade">
+                        Prioridade: </mat-slide-toggle></p>
+                    <p><mat-slide-toggle labelPosition="before" name="estado" [checked]="true" [(ngModel)]="this.Tarefa.Estado">
+                        Concluído: </mat-slide-toggle></p>
+                </div>
+                <mat-form-field appearance="outline" class="example-full-width">
+                    <mat-label>Usuário Responsável</mat-label>
+                    <mat-select name="Id_responsavel" [(ngModel)]="this.Tarefa.Id_responsavel">
+                      <mat-option value="0" ></mat-option>
+                      <mat-option *ngFor="let usuario of Usuarios" [value]="usuario.Id">
+                        {{ usuario.Nome }}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            <div>
+                <div class="example-button-row">
+                  <button id="btnEnviar" mat-raised-button type="button" (click)="enviar()">Enviar<mat-icon>send</mat-icon></button>
+                  <button mat-raised-button type="button" (click)="limparCampos()">Limpar<mat-icon>clear</mat-icon></button>
+                  <button mat-raised-button type="button" routerLink="/tarefas">Voltar<mat-icon>exit_to_app</mat-icon></button>
+                </div>
+            </div>
+        </form>
+    </section>
+</main>
+<app-footer></app-footer>

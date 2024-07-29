@@ -1,0 +1,63 @@
+form {
+    background-color: #f0f0f0; 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+  main{
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 70px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 600px; 
+    padding: 0 20px;
+}
+
+.example-button-row {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 30px;
+    max-width: 600px;
+
+    button{
+        color: black;
+    }
+    
+    > #btnEnviar{
+        background-color: lightgreen;
+    }
+  }
+
+  .text-container{
+    padding-bottom: 20px;
+  }
+
+  p{
+    padding: 5px;
+    font-weight: bold;
+  }
+
+  #dataPicker{
+    padding-bottom: 7px;
+  }
+
+  #descricao{
+    padding-bottom: 9px;
+    height: 240px;
+    
+    #no-resize{
+      resize: none;
+    }
+  }
